@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Biblioteca
 {
   /** @param Vector de pacientes */
-  private static ArrayList<Paciente> colection = new ArrayList<Paciente>();
+  private ArrayList<Paciente> colection = new ArrayList<Paciente>();
 
   /** Builder */
   public Biblioteca() {}
@@ -70,12 +70,13 @@ public class Biblioteca
   }
 
   /** Menus to satisfy options */
-  private static void menuInsert()
+  private void menuInsert()
   {
     Paciente p;
     String n, d, a, ic;
     int t;
     Scanner sc = new Scanner(System.in);
+    char c;
 
     System.out.println("Insert patient's name: ");
     n = sc.nextLine();
@@ -92,25 +93,26 @@ public class Biblioteca
     System.out.println(t + " " + ic);
     System.out.println(a);
     System.out.println("Is correct?");
-    if(sc.nextLine() == "S" || sc.nextLine() == "s")
+    c = sc.next().trim().charAt(0);
+    if( c == 'S' || c == 's')
     {
       p = new Paciente(n, d, a, t, ic);
-      this.insert(p);
+      insert(p);
     }
 
   }
 
-  private static void menuErase()
+  private void menuErase()
   {
 
   }
 
-  private static void menuQuery()
+  private void menuQuery()
   {
 
   }
 
-  public static void menu()
+  public void menu()
   {
     Biblioteca query = new Biblioteca();
     int option;
@@ -143,7 +145,8 @@ public class Biblioteca
 
   public static void main(String[] args)
   {
-    menu();
+    Biblioteca library = new Biblioteca();
+    library.menu();
   }
 
 }
