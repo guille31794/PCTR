@@ -74,37 +74,38 @@ public class Biblioteca
     Paciente p;
     String n, d, a, ic;
     int t;
-    char c;
+    String c = new String();
     try(Scanner sc = new Scanner(System.in))
     {
-    System.out.println("Insert patient's name: ");
-    n = sc.nextLine();
-    System.out.println("Insert IDN: ");
-    d = sc.nextLine();
-    System.out.println("Insert telephone number: ");
-    t = sc.nextInt();
-    System.out.println("Insert adress: ");
-    a = sc.nextLine();
-    System.out.println("Insert insurance company: ");
-    ic = sc.nextLine();
-    System.out.println("New user: ");
-    System.out.println(n + " " + d);
-    System.out.println(t + " " + ic);
-    System.out.println(a);
-    System.out.println("Is correct?");
-    c = sc.next().trim().charAt(0);
-    if( c == 'S' || c == 's')
-    {
-      p = new Paciente(n, d, a, t, ic);
-      insert(p);
+      System.out.println("Insert patient's name: ");
+      n = sc.nextLine();
+      System.out.println("Insert IDN: ");
+      d = sc.nextLine();
+      System.out.println("Insert telephone number: ");
+      t = sc.nextInt();
+      sc.nextLine();
+      System.out.println("Insert adress: ");
+      a = sc.nextLine();
+      System.out.println("Insert insurance company: ");
+      ic = sc.nextLine();
+      System.out.println("New user: ");
+      System.out.println(n + " " + d);
+      System.out.println(t + " " + ic);
+      System.out.println(a);
+      System.out.println("Is correct?");
+      c = sc.nextLine().trim();
+      if( c.charAt(0) == 'Y' || c.charAt(0) == 'y')
+      {
+        p = new Paciente(n, d, a, t, ic);
+        insert(p);
+      }
     }
-  }
   }
 
   private void menuErase()
   {
     int option;
-    char c;
+    String c = new String();
     Paciente p = new Paciente();
     System.out.println("Erase Menu, select option:");
     System.out.println("1.- Erase by name");
@@ -127,11 +128,12 @@ public class Biblioteca
         break;
         default: break;
       }
+      sc.nextLine();
       System.out.println("Are you sure you want to delete? y/n");
       System.out.println(p.getName() + " " + p.getDni() + " " + p.getTelephoneN());
       System.out.println(p.getAdress() + " " + p.getInsuranceC());
-      c = sc.next().trim().charAt(0);
-      if(c == 'y' || c == 'Y')
+      c = sc.nextLine().trim();
+      if(c.charAt(0) == 'y' || c.charAt(0) == 'Y')
       {
         delete(p);
       }
@@ -150,7 +152,7 @@ public class Biblioteca
     try(Scanner sc = new Scanner(System.in))
     {
       option = sc.nextInt();
-
+      sc.nextLine();
       switch(option)
       {
         case 1: System.out.println("Insert name: ");
@@ -173,11 +175,11 @@ public class Biblioteca
   public void menu()
   {
     int option;
-    try(Scanner sc = new Scanner(System.in);)
+    System.out.println("Welcome to your query management");
+    try(Scanner sc = new Scanner(System.in))
     {
       do
       {
-        System.out.println("Welcome to your query management");
         System.out.println("Select the option to perform");
         System.out.println("1.- Insert patient");
         System.out.println("2.- Erase patient");
