@@ -75,7 +75,8 @@ public class Biblioteca
     String n, d, a, ic;
     int t;
     String c = new String();
-    try(Scanner sc = new Scanner(System.in))
+    Scanner sc = new Scanner(System.in);
+    try
     {
       System.out.println("Insert patient's name: ");
       n = sc.nextLine();
@@ -94,11 +95,14 @@ public class Biblioteca
       System.out.println(a);
       System.out.println("Is correct?");
       c = sc.nextLine().trim();
+      
       if( c.charAt(0) == 'Y' || c.charAt(0) == 'y')
       {
         p = new Paciente(n, d, a, t, ic);
         insert(p);
       }
+    }catch(Exception ex) {
+        
     }
   }
 
@@ -174,33 +178,37 @@ public class Biblioteca
 
   public void menu()
   {
-    int option;
+    int option = -1;
     System.out.println("Welcome to your query management");
-    try(Scanner sc = new Scanner(System.in))
+    do
     {
-      do
-      {
         System.out.println("Select the option to perform");
         System.out.println("1.- Insert patient");
         System.out.println("2.- Erase patient");
         System.out.println("3.- Consult patient");
         System.out.println("0.- Exit program");
-        option = sc.nextInt();
+        Scanner sc = new Scanner(System.in);
+        
+        try
+        {
+            option = sc.nextInt();
+        } catch(Exception e) {
+            // Lo que quieras poner, como un continue por ejemplo.....
+            // Pon un continue.
+            continue;
+        }
 
         switch(option)
         {
-          case 1: menuInsert();
-          break;
-          case 2: menuErase();
-          break;
-          case 3: menuQuery();
-          break;
-          case 0: System.out.println("Skipping...");
-          System.exit(-1);
+            case 1: menuInsert(); break;
+            case 2: menuErase(); break;
+            case 3: menuQuery(); break;
+            case 0: {
+                 System.out.println("Skipping...");
+                 System.exit(-1);
+            }
         }
-
-      } while(option != 0);
-    }
+    } while(option != 0);
   }
 
   public static void main(String[] args)
