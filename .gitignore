@@ -2,3 +2,7 @@
 *.class
 *.html
 *.tex
+*.DS_STORE
+*.css
+*.js
+package-list
