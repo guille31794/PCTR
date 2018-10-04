@@ -57,7 +57,7 @@ public class Elipse
 
 	public void Coordinate(double x, double y)
 	{
-		if(((x*x)/getejeMayor())+((y * y)/getejeMenor()) < 1.0)
+		if(((x*x)/(getejeMayor()*getejeMayor()))+((y * y)/(getejeMenor()*getejeMenor())) < 1.0)
 		{
 				System.out.println("The point is inside the elipse");
 		}
