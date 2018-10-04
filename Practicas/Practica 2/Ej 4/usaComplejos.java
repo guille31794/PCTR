@@ -20,31 +20,36 @@ public class usaComplejos
     Complejos C1, C2, C3;
     try(Scanner sc = new Scanner(System.in);)
     {
-        option = Integer.parseInt(sc.nextLine());
+        option = sc.nextInt();
+        sc.nextLine();
     }
-    double rP, iP;
+    double rP = 0, iP = 0;
     switch(option)
     {
       case 1: System.out.println("Insert real part: ");
       try(Scanner sc = new Scanner(System.in);)
       {
-        rP = Double.parseDouble(sc.nextLine());
+        if(sc.hasNextDouble())
+          rP = sc.nextDouble();
       }
       System.out.println("Insert imaginary part:");
       try(Scanner sc = new Scanner(System.in);)
       {
-        iP = sc.nextDouble();
+        if(sc.hasNextDouble())
+          iP = sc.nextDouble();
       }
       C1 = new Complejos(rP, iP);
       System.out.println("Insert real part: ");
       try(Scanner sc = new Scanner(System.in);)
       {
-        rP = sc.nextDouble();
+        if(sc.hasNextDouble())
+          rP = sc.nextDouble();
       }
       System.out.println("Insert imaginary part:");
       try(Scanner sc = new Scanner(System.in);)
       {
-        iP = sc.nextDouble();
+        if(sc.hasNextDouble())
+          iP = sc.nextDouble();
       }
       C2 = new Complejos(rP, iP);
       C3 = C1.Sum(C2);
