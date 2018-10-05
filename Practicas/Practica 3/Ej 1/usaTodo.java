@@ -14,8 +14,6 @@ public class usaTodo
     Pentagono pt1, pt2;
     Hexagono h1, h2;
 
-    p1 = new Poligono();
-    p2 = new Poligono(7.0, 8);
     t1 = new Triangulo();
     t2 = new Triangulo(4.0, 3.5);
     c1 = new Cuadrado();
@@ -24,6 +22,8 @@ public class usaTodo
     pt2 = new Pentagono(2.2, 4.9);
     h1 = new Hexagono();
     h2 = new Hexagono(1.8, 3.2);
+    p1 = h1;
+    p2 = new Pentagono();
 
     System.out.println(p1.toString());
     System.out.println(p2.toString());

@@ -4,7 +4,7 @@
 * Clase que simula un poligono regular de manera abstracta a partir de un punto
 */
 
-public class Poligono extends Punto
+public abstract class Poligono extends Punto
 {
   private double edgeSize;
 	private int vertexN;
