@@ -50,6 +50,6 @@ public class Triangulo extends Poligono
 	@Override
 	public String toString() {
 		return "Triangulo [b_=" + b_ + ", h_=" + h_ + ", Area=" + Area() +
-		", Diameter=" + Diameter() + ", Diagonals=" + Diagonals() +"]";
+		", Diameter=" + super.Perimeter() + ", Diagonals=" + super.Diagonals() +"]";
 	}
 }

@@ -52,6 +52,6 @@ public class Poligono extends Punto
 	@Override
 	public String toString() {
 		return "Poligono [edgeSize=" + edgeSize + ", vertexN=" + vertexN +
-    ", Diameter=" + Diameter() + ", Diagonals=" + Diagonals() + "]";
+    ", Diameter=" + Perimeter() + ", Diagonals=" + Diagonals() + "]";
 	}
 }

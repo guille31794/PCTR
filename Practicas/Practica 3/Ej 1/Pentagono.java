@@ -17,7 +17,7 @@ public class Pentagono extends Poligono
 	*/
 	@Override
 	public String toString() {
-		return "Hexagono [apothem=" + apothem + super.toString() + ", Area[" + Area()
+		return "Pentagono [apothem=" + apothem + " " + super.toString() + ", Area[" + Area()
 		+ "]";
 	}
 
