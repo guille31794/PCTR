@@ -23,4 +23,5 @@ public class Paciente
   public String getAdress() {return adress;}
   public long getTelephoneN() {return telephoneN;}
   public String getInsuranceC() {return insuranceC;}
+  public void setName(String n) {name = n;}
 }

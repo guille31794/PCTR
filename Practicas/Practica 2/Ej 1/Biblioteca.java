@@ -31,10 +31,10 @@ public class Biblioteca
   {
     if(!colection.isEmpty())
     {
-      for (int i = 0; i < colection.size(); ++i)
+      for (Paciente pacient : colection)
       {
-        if(colection.get(i).getName() == patron)
-          return colection.get(i);
+        if(pacient.getName() == patron)
+          return pacient;
       }
     }
 
@@ -95,15 +95,14 @@ public class Biblioteca
       System.out.println(a);
       System.out.println("Is correct?");
       c = sc.nextLine().trim();
-      
+
       if( c.charAt(0) == 'Y' || c.charAt(0) == 'y')
       {
         p = new Paciente(n, d, a, t, ic);
         insert(p);
       }
-    }catch(Exception ex) {
-        
-    }
+    }catch(Exception ex) {}
+    //sc.close();
   }
 
   private void menuErase()
@@ -115,10 +114,10 @@ public class Biblioteca
     System.out.println("1.- Erase by name");
     System.out.println("2.- Erase by IDN");
     System.out.println("3.- Erase by telephone number");
-    try(Scanner sc = new Scanner(System.in))
+    Scanner sc = new Scanner(System.in);
+    try
     {
       option = sc.nextInt();
-
       switch(option)
       {
         case 1: System.out.println("Insert name: ");
@@ -141,8 +140,8 @@ public class Biblioteca
       {
         delete(p);
       }
-    }
-
+    } catch(Exception ex) {}
+    //sc.close();
   }
 
   private void menuQuery()
@@ -153,24 +152,26 @@ public class Biblioteca
     System.out.println("1.- Consult by name");
     System.out.println("2.- Consult by IDN");
     System.out.println("3.- Consult by telephone number");
-    try(Scanner sc = new Scanner(System.in))
+    Scanner sc = new Scanner(System.in);
+    try
     {
       option = sc.nextInt();
       sc.nextLine();
       switch(option)
       {
         case 1: System.out.println("Insert name: ");
-        p = consultName(sc.nextLine());
+        p = consultName(new String(sc.nextLine()));
         break;
         case 2: System.out.println("Insert IDN: ");
-        p = consultDni(sc.nextLine());
+        p = consultDni(new String(sc.nextLine()));
         break;
         case 3: System.out.println("Insert telephone number: ");
-        p = consultTele(sc.nextLong());
+        p = consultTele(new Long(sc.nextLong()));
         break;
         default: break;
       }
-    }
+    }catch(Exception ex){System.out.println("Error in query");}
+    //sc.close();
     System.out.println("Search results: ");
     System.out.println(p.getName() + " " + p.getDni() + " " + p.getTelephoneN());
     System.out.println(p.getAdress() + " " + p.getInsuranceC());
@@ -188,7 +189,6 @@ public class Biblioteca
         System.out.println("3.- Consult patient");
         System.out.println("0.- Exit program");
         Scanner sc = new Scanner(System.in);
-        
         try
         {
             option = sc.nextInt();
@@ -197,7 +197,7 @@ public class Biblioteca
             // Pon un continue.
             continue;
         }
-
+        //sc.close();
         switch(option)
         {
             case 1: menuInsert(); break;

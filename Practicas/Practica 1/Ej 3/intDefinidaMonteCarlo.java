@@ -1,13 +1,18 @@
-import java.util.Random;
+/**
+* @author Guillermo Girón Garcíab
+* @version 1.0
+* Clase que calcula la integral definida de monte Carlo a partir de un argumento
+* introducido por consola
+*/
+
 import java.lang.Math;
 
 public class intDefinidaMonteCarlo
 {
   protected int tPoints, pUnderF;
 
-  public intDefinidaMonteCarlo(int pNumber, int selector)
+  public intDefinidaMonteCarlo(int pNumber, int selectorConstructor)
   {
-    Random random = new Random(System.currentTimeMillis());
     double x, y;
 
     tPoints = pNumber;
@@ -27,7 +32,6 @@ public class intDefinidaMonteCarlo
 
   public intDefinidaMonteCarlo(int pNumber)
   {
-    Random random = new Random(System.currentTimeMillis());
     double x, y;
 
     tPoints = pNumber;

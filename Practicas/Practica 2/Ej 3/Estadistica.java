@@ -21,15 +21,17 @@ public class Estadistica
 
   public void insertElem()
   {
-    try(Scanner sc = new Scanner(System.in))
+    Scanner sc = new Scanner(System.in);
+
+    try
     {
       for(int i = 0; i < size; ++i)
       {
         System.out.println("Introduzca elemento " + (i+1));
         vector[i] = sc.nextInt();
-        //sc.nextLine();
+        sc.nextLine();
       }
-    }
+    } catch(Exception e)  {}
   }
 
   public double media()
@@ -89,8 +91,8 @@ public class Estadistica
     int option;
     Estadistica es = new Estadistica(Integer.parseInt(args[0]));
     es.insertElem();
-
-    try(Scanner sc = new Scanner(System.in))
+    Scanner sc = new Scanner(System.in);
+    try
     {
       System.out.println("Menu estadistico");
       System.out.println("1.- Media");
@@ -99,19 +101,18 @@ public class Estadistica
       System.out.println("4.- Desviacion tipica");
       System.out.println("Otra.- Salir");
       option = sc.nextInt();
-    }
-
-    switch(option)
-    {
-      case 1: System.out.println("La media es " + es.media());
-      break;
-      case 2: System.out.println("La moda es " + es.moda());
-      break;
-      case 3: System.out.println("La varianza es " + es.varianza());
-      break;
-      case 4: System.out.println("La desviacion tipica es " + es.desviacion());
-      break;
-      default: break;
-    }
+      switch(option)
+      {
+        case 1: System.out.println("La media es " + es.media());
+        break;
+        case 2: System.out.println("La moda es " + es.moda());
+        break;
+        case 3: System.out.println("La varianza es " + es.varianza());
+        break;
+        case 4: System.out.println("La desviacion tipica es " + es.desviacion());
+        break;
+        default: break;
+      }
+    } catch(Exception e)  {}
   }
 }
