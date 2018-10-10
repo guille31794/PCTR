@@ -57,8 +57,17 @@ public class mediCalc
                 {
                   clearance = ((((140-age)*weight))/(72*creatinine))*(float)0.85;
                   System.out.println("Clearance lvl = " + clearance);
-
                 }
+                if(clearance >= 90.0)
+                  System.out.println("Normal Function");
+                if(clearance < 90.0 && clearance >=70.0)
+                  System.out.println("Mild kidney damage");
+                if(clearance >= 30.0 && clearance < 60.0)
+                  System.out.println("Moderate kidney damage");
+                if(clearance >= 15.0 && clearance < 30.0)
+                  System.out.println("Severe kidney damage");
+                if(clearance < 15.0)
+                  System.out.println("Kidney failure");
         break;
         case 2: System.out.println("Insert weight: ");
                 try
@@ -72,9 +81,26 @@ public class mediCalc
                 } catch(Exception e)  {}
                 bmi = weight/(height*height);
                 System.out.println("BMI = " + bmi);
+                if(bmi < 16.0)
+                  System.out.println("Severe thinnes");
+                if(bmi >= 16.0 && bmi < 17.0)
+                  System.out.println("Moderate thinnes");
+                if(bmi >= 17.0 && bmi < 18.5)
+                  System.out.println("Acceptable thinnes");
+                if(bmi >= 18.5 && bmi < 25.0)
+                  System.out.println("Normal weight");
+                if(bmi >= 25.0 && bmi < 30.0)
+                  System.out.println("Overweight");
+                if(bmi >= 30.0 && bmi < 35.0)
+                  System.out.println("Obesity type I");
+                if(bmi >= 35.0 && bmi < 40.0)
+                  System.out.println("Obesity type II");
+                if(bmi >= 40.0)
+                  System.out.println("Obesity type III");
         break;
         default: break;
       }
     } catch(Exception e){}
+    sc.close();
   }
 }
