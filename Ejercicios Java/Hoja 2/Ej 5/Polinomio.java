@@ -49,6 +49,7 @@ public class Polinomio
 		Polinomio toReturn = new Polinomio();
 		int mDegree = Math.max(this.getDegree(), p.getDegree());
 		toReturn.setDegree(mDegree);
+		mDegree = Math.min(this.getDegree(), p.getDegree());
 		for(int i = mDegree-1; i >= 0; --i)
 		{
 			toReturn.setPx(i, (this.getPx(i)-p.getPx(i)));
@@ -80,7 +81,7 @@ public class Polinomio
 	{
 		String p = new String();
 		for(int i = getDegree()-1; i >= 0 ;--i)
-			p += ((char)getPx(i) + "x^" + (i+1) + " ");
+			p += (Integer.toString(getPx(i)) + "x^" + i + " ");
 		return p;
 	}
 
@@ -88,7 +89,7 @@ public class Polinomio
 	{
 		for(int i = 0; i < getDegree(); ++i)
 		{
-			setPx(i, (int)Math.random()*10);
+			setPx(i, (int)(Math.random()*10));
 		}
 	}
 }
