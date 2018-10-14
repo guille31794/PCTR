@@ -3,7 +3,7 @@ public class Semaforo
   private String colour;
 	private int n;
   private static final String[] colours = {"red", "yellow", "green"};
-  public Semaforo() {n = 0; colour = colours[n];}
+  public Semaforo() {n = 0; colour = null;}
 
 	public String getColour() {
 		return colour;
