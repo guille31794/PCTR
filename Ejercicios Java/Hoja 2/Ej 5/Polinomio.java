@@ -33,27 +33,36 @@ public class Polinomio
 
 	public Polinomio add(Polinomio p)
 	{
-		Polinomio toReturn = new Polinomio();
-		int mDegree = Math.max(this.getDegree(), p.getDegree());
-		toReturn.setDegree(mDegree);
-		mDegree = Math.min(this.getDegree(), p.getDegree());
-		for(int i = mDegree-1; i >= 0; --i)
+		int MaxDegree = Math.max(this.getDegree(), p.getDegree());
+		Polinomio toReturn = new Polinomio(MaxDegree);
+		int MinDegree = Math.min(this.getDegree(), p.getDegree());
+		for(int i = 0; i < MinDegree; ++i)
 		{
 			toReturn.setPx(i, (this.getPx(i)+p.getPx(i)));
 		}
+		for(int i = MinDegree-1; i < MaxDegree; ++i)
+			if(MaxDegree == p.getDegree())
+				toReturn.setPx(i, p.getPx(i));
+			else
+				toReturn.setPx(i, this.getPx(i));
 		return toReturn;
 	}
 
 	public Polinomio sub(Polinomio p)
 	{
-		Polinomio toReturn = new Polinomio();
-		int mDegree = Math.max(this.getDegree(), p.getDegree());
-		toReturn.setDegree(mDegree);
-		mDegree = Math.min(this.getDegree(), p.getDegree());
-		for(int i = mDegree-1; i >= 0; --i)
+		int MaxDegree = Math.max(this.getDegree(), p.getDegree());
+		Polinomio toReturn = new Polinomio(MaxDegree);
+		toReturn.setDegree(MaxDegree);
+		int MinDegree = Math.min(this.getDegree(), p.getDegree());
+		for(int i = 0; i < MinDegree; ++i)
 		{
 			toReturn.setPx(i, (this.getPx(i)-p.getPx(i)));
 		}
+		for(int i = MinDegree-1; i < MaxDegree; ++i)
+			if(MaxDegree == p.getDegree())
+				toReturn.setPx(i, p.getPx(i));
+			else
+				toReturn.setPx(i, this.getPx(i));
 		return toReturn;
 	}
 
