@@ -24,4 +24,8 @@ public class Paciente
   public long getTelephoneN() {return telephoneN;}
   public String getInsuranceC() {return insuranceC;}
   public void setName(String n) {name = n;}
+  public void setDni(String d)  {dni = d;}
+  public void setAdress(String a) {adress = a;}
+  public void setInsuranceC(String ic)  {insuranceC = ic;}
+  public void setTelephone(int n) {telephoneN = n;}
 }
