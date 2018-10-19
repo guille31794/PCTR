@@ -17,7 +17,7 @@ public class CellAutomate
     generations = g;
 
     for(int i = 0; i < cellN; ++i)
-      primitive[i] = Math.random()*100;
+      primitive[i] = (int)(Math.random()*100);
   }
 
   public void evolution()
