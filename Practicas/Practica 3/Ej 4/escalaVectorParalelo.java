@@ -10,17 +10,18 @@ public class escalaVectorParalelo extends Thread
   private static int n = 10000;
   private static double[] vector = new double[n];
   private static final int particiones = 8;
-  private int init, offset;
+  private final int init, offset;
   private double v[] = new double[n/8];
 
   public escalaVectorParalelo(int i, int o) {init = i; offset = o;}
 
-  public static void escale()
+  public void escale()
   {
-    for(; init < offset; ++init)
+    int j = 0;
+    for(int i = this.init; i < this.offset; ++i)
     {
-        v[i] = vector[init];
-        ++i;
+        v[j] = vector[init];
+        ++j;
     }
   }
 
