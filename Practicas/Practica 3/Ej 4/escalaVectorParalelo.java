@@ -7,9 +7,8 @@
 
 public class escalaVectorParalelo extends Thread
 {
-  private static int n = 10000;
+  private static int n = 10000000;
   private static double[] vector = new double[n];
-  private static final int particiones = 8;
   private final int init, offset;
   private double v[] = new double[n/8];
 
@@ -37,7 +36,7 @@ public class escalaVectorParalelo extends Thread
 
     for(int i = 0; i < n; ++i)
     {
-      vector[i] = Math.random()*4000;
+      vector[i] = Math.random()*10000000;
     }
 
     escalaVectorParalelo e[] = new escalaVectorParalelo[8];
@@ -45,7 +44,7 @@ public class escalaVectorParalelo extends Thread
     {
       init = offset;
       offset += n/8;
-      e [i] = new escalaVectorParalelo(init, offset);
+      e[i] = new escalaVectorParalelo(init, offset);
       e[i].start();
     }
   }
