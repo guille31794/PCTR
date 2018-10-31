@@ -13,8 +13,8 @@ public class tareaHilo extends Thread
 
   public static void main(String[] args) throws Exception
   {
-    int N = 2000;
-    tareaHilo[] t = new tareaHilo[10000];
+    int N = 100000;
+    tareaHilo[] t = new tareaHilo[N];
     long init, endT, diff;
     for(int i = 0; i < N; ++i)
       t[i] = new tareaHilo();

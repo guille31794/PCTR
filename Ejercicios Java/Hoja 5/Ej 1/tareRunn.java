@@ -13,10 +13,10 @@ public class tareRunn implements Runnable
 
   public static void main(String[] args)
   {
-    int N = 1500;
+    int N = 500000;
     long init, endt, diff;
     /* Thread pool */
-    ExecutorService executor = Executors.newFixedThreadPool(N);
+    ExecutorService executor = Executors.newCachedThreadPool();
     init = System.currentTimeMillis();
     for(int i = 0; i < N; ++i)
       /* smart execution */

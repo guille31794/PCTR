@@ -9,4 +9,7 @@
 *.lyx~
 package-list
 *.zip
-.lyx#
+*.lyx#
+*.mat
+*.tif
+*.jpg
