@@ -4,7 +4,7 @@
 class algoLamport implements Runnable
 {
     /* Iteraciones que dara cada hilo */
-    static final int iteraciones = 2000000, N = 4;
+    static final int iteraciones = 2000, N = 4;
     /* Recurso compartido */
     static volatile int enteroCompartido = 0, it = 0;
     /* Numero para los procesos */
