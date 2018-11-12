@@ -1,0 +1,19 @@
+% Exercise 1
+% time measured in seconds
+% prime numbers
+range = [1000000 5000000 9999999 20000000 35000000];
+secTime = [0 8 21 58 125];
+paralellTime = [0 3 10 26 61];
+
+plot(range, secTime, 'g'); hold on;
+plot(range, paralellTime, 'r'); 
+legend('Prime Sec', 'Prime Par'); hold off;
+
+% network
+Cb = [0.4 0.5 0.6 0.7 0.8 0.9];
+PoolSize = [6 8 10 13 
+T = [3.713 3.428 3.802 2.421 2.541 3.349];
+plot(Cb,T); legend('Time x Cb');
+
+% network sec
+Tsec = [27.558];

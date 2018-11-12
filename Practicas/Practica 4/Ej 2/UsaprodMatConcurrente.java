@@ -16,17 +16,21 @@ public class UsaprodMatConcurrente
     int nThreads = 2, init = 0, offset = 0;
     prodMatConcurrente[] t = new prodMatConcurrente[nThreads];
     prodMatConcurrente.menu();
+    long initTime = System.nanoTime();
     for(int i = 0; i < nThreads; ++i)
     {
       init = offset;
       offset += prodMatConcurrente.dim/nThreads;
       t[i] = new prodMatConcurrente(init, offset);
       t[i].start();
-      t[i].join();
     }
+    for(int i = nThreads-1; i >= 0; --i)
+      t[i].join();
 
-    prodMatConcurrente.printMatrix();
-    System.out.println("The Transposed vector result is: ");
-    System.out.println(Arrays.toString(prodMatConcurrente.res));
+    double totalT = (System.nanoTime()-initTime)/10e6;
+    System.out.println("Dimension: " + prodMatConcurrente.getDim() + " and time: " + totalT);
+    //prodMatConcurrente.printMatrix();
+    //System.out.println("The Transposed vector result is: ");
+    //System.out.println(Arrays.toString(prodMatConcurrente.res));
   }
 }

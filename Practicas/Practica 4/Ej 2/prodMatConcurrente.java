@@ -16,6 +16,8 @@ public class prodMatConcurrente extends Thread
   public static int[] res;
   private int init, offset;
 
+  public static int getDim()  {return dim;}
+
   public prodMatConcurrente(int init, int offset)
   {
     this.init = init;
@@ -58,15 +60,15 @@ public class prodMatConcurrente extends Thread
 
   private static void FillRandomly()
   {
-    dim = (int)(Math.random()*99+1);
+    dim = (int)(Math.random()*9999+1);
     res = new int[dim];
     Arrays.fill(res, 0);
     v = new int[dim];
     M = new int[dim][dim];
     for(int i = 0; i < dim; ++i)
       v[i] = (int)(Math.random()*99+1);
-    System.out.println("Dimension is: " + dim);
-    System.out.println("Transposed vector is: " + Arrays.toString(v));
+    //System.out.println("Dimension is: " + dim);
+    //System.out.println("Transposed vector is: " + Arrays.toString(v));
   }
 
   @Override

@@ -1,4 +1,4 @@
-/**
+ /**
 * @author Guillermo Girón García
 * @version 1.0
 * Clase que realiza el producto de matriz por un vector sin concurrencia
@@ -8,12 +8,14 @@ import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Random;
 
-public class matVector
+public class prodMat
 {
   private static int[][] M;
   private static int dim;
   private static int[] v;
   private static int[] res;
+
+  public static int getDim()  {return dim;}
 
   private static void printMatrix()
   {
@@ -47,13 +49,13 @@ public class matVector
 
   private static void FillRandomly()
   {
-    dim = (int)(Math.random()*99+1);
+    dim = (int)(Math.random()*9999+1);
     v = new int[dim];
     M = new int[dim][dim];
     for(int i = 0; i < dim; ++i)
-      v[i] = (int)(Math.random()*99+1);
-    System.out.println("Dimension is: " + dim);
-    System.out.println("Transposed vector is: " + Arrays.toString(v));
+      v[i] = (int)(Math.random()*9999+1);
+    //System.out.println("Dimension is: " + dim);
+    //System.out.println("Transposed vector is: " + Arrays.toString(v));
   }
 
   private static void prod()
@@ -70,9 +72,9 @@ public class matVector
       for(int j = 0; j < dim; ++j)
         res[i] += M[i][j] * v[j];
 
-    printMatrix();
-    System.out.println("The Transposed vector result is: ");
-    System.out.println(Arrays.toString(res));
+    //printMatrix();
+    //System.out.println("The Transposed vector result is: ");
+    //System.out.println(Arrays.toString(res));
   }
 
   public static void menu()
@@ -99,6 +101,9 @@ public class matVector
   public static void main(String[] args)
   {
     menu();
+    long init = System.nanoTime();
     prod();
+    double totalT = (System.nanoTime()-init)/10e6;
+    System.out.println("Dimension: " + getDim() + " and time: " + totalT);
   }
 }

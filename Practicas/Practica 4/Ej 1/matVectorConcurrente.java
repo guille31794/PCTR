@@ -16,6 +16,8 @@ public class matVectorConcurrente implements Runnable
   private static int[] res;
   private int init, offset;
 
+  public static int getDim()  {return dim;}
+
   public matVectorConcurrente(int init, int offset)
   {
     this.init = init;
@@ -58,15 +60,15 @@ public class matVectorConcurrente implements Runnable
 
   private static void FillRandomly()
   {
-    dim = (int)(Math.random()*99+1);
+    dim = 20000;//(int)(Math.random()*9999+1);
     res = new int[dim];
     Arrays.fill(res, 0);
     v = new int[dim];
     M = new int[dim][dim];
     for(int i = 0; i < dim; ++i)
-      v[i] = (int)(Math.random()*99+1);
-    System.out.println("Dimension is: " + dim);
-    System.out.println("Transposed vector is: " + Arrays.toString(v));
+      v[i] = (int)(Math.random()*9999+1);
+    //System.out.println("Dimension is: " + dim);
+    //System.out.println("Transposed vector is: " + Arrays.toString(v));
   }
 
   @Override
@@ -107,26 +109,30 @@ public class matVectorConcurrente implements Runnable
   public static void main(String[] args) throws Exception
   {
     menu();
-    int nThreads = 2, init = 0, offset = 0;
+    int nThreads = 4, init = 0, offset = 0;
     Runnable[] core = new Runnable[nThreads];
     Thread[] t = new Thread[nThreads];
 
     for(int i = 0; i < nThreads; ++i)
     {
-      init = offset;
+      init = offset+1;
       offset += dim/nThreads;
       core[i] = new matVectorConcurrente(init, offset);
     }
 
+    long initTime = System.nanoTime();
     for(int i = 0; i < nThreads; ++i)
     {
       t[i] = new Thread(core[i]);
       t[i].start();
-      t[i].join();
     }
+    for(int i = nThreads-1; i >= 0; --i)
+      t[i].join();
 
-    printMatrix();
-    System.out.println("The Transposed vector result is: ");
-    System.out.println(Arrays.toString(res));
+    double totalT = (System.nanoTime()-initTime)/10e9;
+    System.out.println("Dimension: " + getDim() + " and time: " + totalT);
+    //printMatrix();
+    //System.out.println("The Transposed vector result is: ");
+    //System.out.println(Arrays.toString(res));
   }
 }
