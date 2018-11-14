@@ -56,18 +56,19 @@ public class matVector
       v[i] = (int)(Math.random()*9999+1);
     //System.out.println("Dimension is: " + dim);
     //System.out.println("Transposed vector is: " + Arrays.toString(v));
-  }
 
-  private static void prod()
-  {
+    //This really belongs to Fill randomly
     Random r = new Random();
     res = new int[dim];
     Arrays.fill(res, 0);
 
     for(int i = 0; i < dim; ++i)
       for(int j = 0; j < dim; ++j)
-        M[i][j] = r.nextInt();
+        M[i][j] = (int)(Math.random()*9999+1);
+  }
 
+  private static void prod()
+  {
     for(int i = 0; i < dim; ++i)
       for(int j = 0; j < dim; ++j)
         res[i] += M[i][j] * v[j];
