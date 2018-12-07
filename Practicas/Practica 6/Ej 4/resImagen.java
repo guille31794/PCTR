@@ -60,20 +60,21 @@ public class resImagen
   {
       height = Integer.parseInt(args[0]);
       wide = Integer.parseInt(args[1]);
-      
+
       pic =
       new BufferedImage(height, wide, BufferedImage.TYPE_INT_RGB);
 
-      long endTime, iniTime = System.currentTimeMillis();
+      double endTime, iniTime = System.currentTimeMillis();
       System.out.println("Loading file in matrix");
       load();
 
       System.out.println("Highlighting picture");
       Highlight(height, wide, "hightlighted.png");
       endTime = System.currentTimeMillis();
+      double time = (endTime-iniTime)/1000;
 
       System.out.println("Matrix saved");
-      System.out.println("Time: " + (endTime-iniTime) + "ms");
+      System.out.println("Time: " + time + "s");
 
   }
 }

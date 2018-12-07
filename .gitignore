@@ -13,3 +13,5 @@ package-list
 *.mat
 *.tif
 *.jpg
+*.tiff
+*.png

@@ -17,14 +17,16 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.util.Random;
 import java.util.concurrent.*;
+import java.util.*;
+import java.io.*;
 
-public class resImagenParFin implements Runnable
+public class resImagenParGru implements Runnable
 {
   private int start, end;
   private static int height, wide;
   private static BufferedImage pic;
 
-  public resImagenParFin(int start, int end)
+  public resImagenParGru(int start, int end)
   {
     this.start = start;
     this.end = end;
@@ -70,31 +72,29 @@ public class resImagenParFin implements Runnable
   {
       height = Integer.parseInt(args[0]);
       wide = Integer.parseInt(args[1]);
-      int nThreads = 2100;
+      int nThreads = Runtime.getRuntime().availableProcessors();
       int frameSize = height/nThreads;
       int s = 0;
       int e = frameSize;
       pic =
       new BufferedImage(height, wide, BufferedImage.TYPE_INT_RGB);
       ExecutorService executor = Executors.newFixedThreadPool(nThreads);
-
-      double endTime, iniTime = System.currentTimeMillis();
       System.out.println("Loading file in matrix");
       for(int i = 0; i < nThreads; ++i)
       {
-        executor.execute(new resImagenParFin(s,e));
+        executor.submit(new resImagenParGru(s,e));
         s = e+1;
         e += frameSize;
       }
+      double endTime, iniTime = System.currentTimeMillis();
       executor.shutdown();
       System.out.println("Highlighting picture");
-      if(!executor.awaitTermination(5, TimeUnit.SECONDS))
+      if(!executor.awaitTermination(120, TimeUnit.SECONDS))
         System.err.println("Error");
       System.out.println("Saving Matrix");
       ImageIO.write(pic, "png", new File("hightlighted"));
       endTime = System.currentTimeMillis();
       double time = (endTime-iniTime)/1000;
       System.out.println("Time: " + time + "s");
-
   }
 }
