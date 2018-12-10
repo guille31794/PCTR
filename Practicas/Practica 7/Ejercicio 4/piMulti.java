@@ -9,12 +9,12 @@ import java.lang.Math;
 import java.util.concurrent.*;
 import java.util.Random;
 
-public class intParalelauniCont implements Runnable
+public class piMulti implements Runnable
 {
   protected static int pUnderF;
   private int start, end;
 
-  public intParalelauniCont(int start, int end)
+  public piMulti(int start, int end)
   {
     this.start = start;
     this.end = end;
@@ -25,15 +25,16 @@ public class intParalelauniCont implements Runnable
   {
     Random r = new Random(1);
     double x, y;
+    int count = 0;
     for(int i = this.start; i < this.end; ++i)
     {
       x = r.nextDouble();
       y = r.nextDouble();
 
-      if(y < Math.sin(x))
-        synchronized(this) {  ++pUnderF;}
+      if((x*x) + (y*y) <= 1)
+        ++count;
     }
-
+    synchronized(this) {  pUnderF += count;}
   }
 
   public static void main(String[] args) throws Exception
@@ -47,7 +48,7 @@ public class intParalelauniCont implements Runnable
     double endTime, initTime = System.currentTimeMillis();
     while(i < nThreads)
     {
-      tpe.execute(new intParalelauniCont(start, end));
+      tpe.execute(new piMulti(start, end));
       start = end;
       end += frameSize;
       ++i;
@@ -56,7 +57,7 @@ public class intParalelauniCont implements Runnable
     if(!tpe.awaitTermination(10, TimeUnit.SECONDS))
       System.out.println("Error");
     endTime = System.currentTimeMillis();
-    System.out.println("Sin function aproximation is: " + (double)pUnderF/tPoints);
+    System.out.println("Pi function aproximation is: " + (double)pUnderF/tPoints);
     System.out.println("Time: " + (endTime-initTime) + "ms");
   }
 }
