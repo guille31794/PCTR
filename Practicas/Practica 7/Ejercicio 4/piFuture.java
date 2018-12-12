@@ -62,7 +62,7 @@ public class piFuture implements Callable
     for(Future<Integer> future:list)
       pUnderF += future.get();
     endTime = System.currentTimeMillis();
-    System.out.println("Pi function aproximation is: " + (double)pUnderF/tPoints);
+    System.out.println("Pi function aproximation is: " + 4.0*(double)pUnderF/tPoints);
     System.out.println("Time: " + (endTime-initTime) + "ms");
   }
 }

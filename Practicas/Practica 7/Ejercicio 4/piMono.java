@@ -57,7 +57,7 @@ public class piMono implements Runnable
     if(!tpe.awaitTermination(10, TimeUnit.SECONDS))
       System.out.println("Error");
     endTime = System.currentTimeMillis();
-    System.out.println("Pi function aproximation is: " + (double)pUnderF/tPoints);
+    System.out.println("Pi function aproximation is: " + 4.0*(double)pUnderF/tPoints);
     System.out.println("Time: " + (endTime-initTime) + "ms");
   }
 }
