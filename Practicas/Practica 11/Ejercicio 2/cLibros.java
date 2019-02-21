@@ -10,7 +10,7 @@ public class cLibros
 {
   public static void main(String[] args) throws Exception
   {
-    iLibros remoteServer = (iLibros)Naming.lookup("server");
+    iLibros remoteServer = (iLibros)Naming.lookup("//localhost/server");
 
   }
 }

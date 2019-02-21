@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - conVolSecuencial",
+            "request": "launch",
+            "mainClass": "conVolSecuencial",
+            "projectName": "PCTR_248d1d1f"
+        }
+    ]
+}

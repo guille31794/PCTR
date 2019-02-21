@@ -19,7 +19,7 @@ public class cBonoloto
     for(int i = 0; i < 6; ++i)
       bet[i] = sc.nextInt();
 
-    iBonoLoto remoteServer = (iBonoLoto)Naming.lookup("server");
+    iBonoLoto remoteServer = (iBonoLoto)Naming.lookup("//localhost/server");
     if(remoteServer.compApuesta(bet))
       System.out.println("You won! But you still are poor");
     else
