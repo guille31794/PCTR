@@ -19,19 +19,14 @@ public class conVolParalelo implements Runnable
     public static final int[][] Sobel = new int[][]{{-1, 0, 1}, {-2,0,2}, {-1,0,1}};
     public static final int[][] sharpen = new int[][]{{1,-2,1}, {-2,5,-2}, {1,-2,1}};
 
-    private int option;
-    //private int[][]
+    private int option, start, end;
+    private int[][] neighborhood;
 
     public conVolParalelo(int option, int start, int end)
     {
         this.option = option;
-        for(; start < end; ++start)
-           for(int j = 1; j < 9998; ++j)
-           {
-               int[][] neighborhood = new int[][]{{matrix[i-1][j-1], matrix[i-1][j], matrix[i-1][j+1]},
-               {matrix[i][j-1], matrix[i][j], matrix[i][j+1]}, {matrix[i+1][j-1], matrix[i+1][j], matrix[i+1][j+1]}};
-               
-           }
+        this.start = start;
+        this.end = end;
     }
 
     public static void fill()
@@ -43,7 +38,7 @@ public class conVolParalelo implements Runnable
                matrix[i][j] = r.nextInt(40)-20;
     }
 
-    public static int prod(int[][] n, int[][] con)
+    public int prod(int[][] n, int[][] con)
     {
        int[] res = new int[]{0,0,0}; 
        for(int i = 0; i < 3; ++i)
@@ -57,9 +52,15 @@ public class conVolParalelo implements Runnable
        return finalRes;
     }
 
-    public static void convolution(int[][] con)
+    public void convolution(int[][] con)
     {
-        matrix[i][j] = prod(neighborhood, con);
+        for(int i = start; i < end; ++i)
+           for(int j = 1; j < 9998; ++j)
+           {
+               neighborhood = new int[][]{{matrix[i-1][j-1], matrix[i-1][j], matrix[i-1][j+1]},
+               {matrix[i][j-1], matrix[i][j], matrix[i][j+1]}, {matrix[i+1][j-1], matrix[i+1][j], matrix[i+1][j+1]}};
+               matrix[i][j] = prod(neighborhood, con);
+           }
     }
 
     @Override
@@ -85,12 +86,17 @@ public class conVolParalelo implements Runnable
         }
     }
 
-    public static void main(String[] args) 
+    public static void main(String[] args) throws Exception
     {
         fill();
 
         //Concurrent stuff
-        int threads = Integer.parseInt(args);
+        int threads;
+        if(!args[0].isEmpty())
+            threads = Integer.parseInt(args[0]);
+        else
+            threads = 4;//Runtime.availableProcessors();
+
         int works = 9998/threads;
         ThreadPoolExecutor tpe = (ThreadPoolExecutor)Executors.newFixedThreadPool(threads);
         
@@ -105,10 +111,13 @@ public class conVolParalelo implements Runnable
         } 
 
         //Algorithm
+        int start = 1, end = works;
         long iniTime = System.currentTimeMillis(), totalTime;
         for(int i = 0; i < threads; ++i)
         {
             tpe.execute(new conVolParalelo(option, start, end));
+            start = end+1;
+            end += works;
         }
         tpe.shutdown();
         tpe.awaitTermination(10, TimeUnit.SECONDS);
