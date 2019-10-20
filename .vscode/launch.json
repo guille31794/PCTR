@@ -2,6 +2,42 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - lambda",
+            "request": "launch",
+            "mainClass": "lambda"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - redCajeros",
+            "request": "launch",
+            "mainClass": "redCajeros"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - escalaVPar",
+            "request": "launch",
+            "mainClass": "escalaVPar"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - escalaVector",
+            "request": "launch",
+            "mainClass": "escalaVector"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Usa_tareaRunnable",
+            "request": "launch",
+            "mainClass": "Usa_tareaRunnable"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Usa_hebra",
+            "request": "launch",
+            "mainClass": "Usa_hebra"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - conVolSecuencial",
             "request": "launch",
             "mainClass": "conVolSecuencial",

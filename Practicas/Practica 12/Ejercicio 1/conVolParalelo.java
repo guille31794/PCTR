@@ -108,11 +108,12 @@ public class conVolParalelo implements Runnable
            System.out.println("Menu:\n1.- Focus\n2.- Highlight edges\n3.- Detect edges\n4.- Sobel filter");
            System.out.println("5.- Sharpen filter\nSelect option: ");
            option = sc.nextInt();
-        } 
+        }
+        sc.close(); 
 
         //Algorithm
         int start = 1, end = works;
-        long iniTime = System.currentTimeMillis(), totalTime;
+        double iniTime = System.currentTimeMillis(), totalTime;
         for(int i = 0; i < threads; ++i)
         {
             tpe.execute(new conVolParalelo(option, start, end));
@@ -121,7 +122,7 @@ public class conVolParalelo implements Runnable
         }
         tpe.shutdown();
         tpe.awaitTermination(10, TimeUnit.SECONDS);
-        totalTime = (System.currentTimeMillis() - iniTime)/1000;
+        totalTime = (double)((System.currentTimeMillis() - iniTime)/1000);
         System.out.println("Needed time was: " +  totalTime + "s");
     }
 }
