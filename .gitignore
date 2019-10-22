@@ -6,7 +6,7 @@
 *.css
 *.js
 *.lyx
-*.lyx~
+#*.lyx~
 package-list
 *.zip
 *.lyx#

@@ -41,7 +41,7 @@ public class matVectorConcurrente implements Runnable
                 A[i][j] = r.nextInt(10);
         }
 
-        int nHilos = 2, start = 0, porcion = 10000/nHilos, 
+        int nHilos = 16, start = 0, porcion = 10000/nHilos, 
         end = porcion;
         matVectorConcurrente h[] = new matVectorConcurrente[nHilos];
         Thread t[] = new Thread[nHilos];
