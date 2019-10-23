@@ -5,8 +5,8 @@
 *.DS_STORE
 *.css
 *.js
-*.lyx
-#*.lyx~
+#*.lyx
+*.lyx~
 package-list
 *.zip
 *.lyx#
