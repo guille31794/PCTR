@@ -88,7 +88,27 @@ Guillermo Girón García
 \end_layout
 
 \begin_layout Standard
+1) El algoritmo de Dekker, en un portatil equipado con un intel i3 3210M
+ con 2 núcleos físicos y 4 lógicos, acaba bloqueandose .
+ En mi caso particular he empezado con 1.000.000 de iteraciones, obteniendo
+ fallo del algoritmo, después realicé la prueba con 100000 iteraciones,
+ y obtuve identico resultado.
+ En última instancia, realicé la prueba con tan solo 10.000 iteraciones,
+ y de nuevo, obtuve fallo.
+\end_layout
 
+\begin_layout Standard
+2) Tras varias ejecuciones, se comprueba que en la sección el critica el
+ recurso tiene un valor distinto al que debería tener, por lo que no se
+ está produciendo acceso en exclusión mutua.
+ También he observado que el orden de ejecución de las hebras es aleatorio,
+ y no secuencial, lo cual acaba produciendo un interbloqueo al final de
+ la ejecución del programa.
+ En mi caso he realizado las pruebas con 20.000 iteraciones.
+\end_layout
+
+\begin_layout Standard
+3)
 \end_layout
 
 \end_body
