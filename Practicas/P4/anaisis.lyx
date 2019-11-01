@@ -108,7 +108,9 @@ Guillermo Girón García
 \end_layout
 
 \begin_layout Standard
-3)
+4) Ambos procesos ejecutando el algoritmo, acceden simultaneamente a la
+ sección crítica, quedando así el programa bloqueado, ya que ninguno de
+ los hilos puede avanzar en su ejecución.
 \end_layout
 
 \end_body

@@ -4,11 +4,8 @@
 * Class that implements Eisseber-McGuire algorithm for 2 processes.
 */
 
-<<<<<<< HEAD
 import java.util.concurrent.*;
 
-=======
->>>>>>> 6e4edbceb2b52caaee17b540f88d1c91304c6f56
 enum State { IDLE, WAITING, RUNNING}
 
 public class algEisenbergMcGuire implements Runnable
@@ -89,13 +86,10 @@ public class algEisenbergMcGuire implements Runnable
 
   public static void main(String[] args)
   {
-<<<<<<< HEAD
     ExecutorService ex = Executors.newFixedThreadPool​(2);
     ex.submit(new algEisenbergMcGuire(1));
     ex.submit(new algEisenbergMcGuire(2));
-=======
-    new Thread(new algEisenbergMcGuire(1)).start();
-    new Thread(new algEisenbergMcGuire(2)).start();
->>>>>>> 6e4edbceb2b52caaee17b540f88d1c91304c6f56
+    ex.shutdown();
+    ex.awaitTermination(10, TimeUnit.SECONDS);
   }
 }

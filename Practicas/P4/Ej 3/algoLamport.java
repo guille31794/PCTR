@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-=======
->>>>>>> 6e4edbceb2b52caaee17b540f88d1c91304c6f56
 /* Adaptado de M. Ben-Ari por Manuel Francisco */
 
 /* Algoritmo de la panaderia para dos procesos */
