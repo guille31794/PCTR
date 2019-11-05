@@ -8,7 +8,7 @@ import java.util.concurrent.*;
 
 public class matVectorConcurrente implements Runnable
 {
-    public static int A[][], b[], y[];
+    public static int A[][], b[][], y[][], size = 1000;
     private int start, end;
 
     public matVectorConcurrente(int s, int e)
@@ -19,46 +19,48 @@ public class matVectorConcurrente implements Runnable
 
     @Override
     public void run() 
-    {
-        for(int i = start; i < end; ++i)
-            for(int j = 0; j < 10000; ++j)
-                y[i] += A[i][j]* b[j];
+    {   
+        for(int k = start; k < end; ++k)
+            for(int i = start; i < end; ++i)
+                for(int j = start; j < end; ++j)
+                    y[k][i] += A[k][j] * b[j][i];
 
     }
     public static void main(String[] args) throws
     InterruptedException
     {
         Random r = new Random();
-        A = new int[10000][10000];
-        b = new int[10000];
-        y = new int[10000];
+        A = new int[size][size];
+        b = new int[size][size];
+        y = new int[size][size];
 
-        for(int i = 0; i < 10000; ++i)
-        {
-            b[i] = r.nextInt(10);
-            y[i] = 0;
-            for(int j = 0; j < 10000; ++j)
+        for(int i = 0; i < size; ++i)
+            for(int j = 0; j < size; ++j)
+            {
                 A[i][j] = r.nextInt(10);
-        }
+                b[i][j] = r.nextInt(10);
+                y[i][j] = 0;
+            }
 
-        int nHilos = 16, start = 0, porcion = 10000/nHilos, 
+        int nHilos = 2, 
+        start = 0, 
+        porcion = size/nHilos, 
         end = porcion;
         matVectorConcurrente h[] = new matVectorConcurrente[nHilos];
-        Thread t[] = new Thread[nHilos];
+        ThreadPoolExecutor ex = 
+        ThreadPoolExecutor(Executors.newFixedThreadPool(nHilos));
         double timeSt = System.currentTimeMillis();
 
         for(int i = 0; i < nHilos; ++i)
         {
             h[i] = new matVectorConcurrente(start, end);
+            ex.submit(h[i]);
             start = end + 1;
             end += porcion;
-            t[i] = new Thread(h[i]);
-            t[i].start();
         }
+        ex.shutdown();
+        ex.awaitTermination(2, TimeUnit.SECONDS);
 
-        for(int i = 0; i < nHilos; ++i)
-            t[i].join();
-        
         double timEnd = System.currentTimeMillis() - timeSt;
         System.out.println("El tiempo es: " + timEnd + "ms");
     }
