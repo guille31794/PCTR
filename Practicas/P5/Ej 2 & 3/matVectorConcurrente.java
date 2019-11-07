@@ -21,8 +21,8 @@ public class matVectorConcurrente implements Runnable
     public void run() 
     {   
         for(int k = start; k < end; ++k)
-            for(int i = start; i < end; ++i)
-                for(int j = start; j < end; ++j)
+            for(int i = 0; i < size; ++i)
+                for(int j = 0; j < size; ++j)
                     y[k][i] += A[k][j] * b[j][i];
 
     }
@@ -48,7 +48,7 @@ public class matVectorConcurrente implements Runnable
         end = porcion;
         matVectorConcurrente h[] = new matVectorConcurrente[nHilos];
         ThreadPoolExecutor ex = 
-        ThreadPoolExecutor(Executors.newFixedThreadPool(nHilos));
+        (ThreadPoolExecutor)Executors.newFixedThreadPool(nHilos);
         double timeSt = System.currentTimeMillis();
 
         for(int i = 0; i < nHilos; ++i)
@@ -59,7 +59,7 @@ public class matVectorConcurrente implements Runnable
             end += porcion;
         }
         ex.shutdown();
-        ex.awaitTermination(2, TimeUnit.SECONDS);
+        ex.awaitTermination(50, TimeUnit.DAYS);
 
         double timEnd = System.currentTimeMillis() - timeSt;
         System.out.println("El tiempo es: " + timEnd + "ms");

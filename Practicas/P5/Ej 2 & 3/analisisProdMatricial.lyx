@@ -90,7 +90,7 @@ Guillermo Girón García
 \begin_layout Standard
 3) En un portatil, equipado con i3 3210m, 8GB de ram, y ejecutando una distribuc
 ión Linux basada en Ubuntu 19.10, con openJDK 13, los resultados obtenidos
- son:
+ para una matriz de 1000x1000 elementos son:
 \end_layout
 
 \begin_layout Standard
@@ -114,7 +114,7 @@ Tareas
 \begin_inset Text
 
 \begin_layout Plain Layout
-Tiempo (ms)
+Tiempo 
 \end_layout
 
 \end_inset
@@ -143,7 +143,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-1087
+10.87
 \end_layout
 
 \end_inset
@@ -163,7 +163,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+2
 \end_layout
 
 \end_inset
@@ -172,7 +172,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+5.98
 \end_layout
 
 \end_inset
@@ -181,7 +181,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.81
 \end_layout
 
 \end_inset
@@ -192,7 +192,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+4
 \end_layout
 
 \end_inset
@@ -201,7 +201,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+4.4
 \end_layout
 
 \end_inset
@@ -210,7 +210,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+2.47
 \end_layout
 
 \end_inset
@@ -221,7 +221,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+8
 \end_layout
 
 \end_inset
@@ -230,7 +230,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+5.3
 \end_layout
 
 \end_inset
@@ -239,7 +239,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+2.05
 \end_layout
 
 \end_inset
@@ -250,7 +250,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+16
 \end_layout
 
 \end_inset
@@ -259,7 +259,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+5.4
 \end_layout
 
 \end_inset
@@ -268,7 +268,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+2.01
 \end_layout
 
 \end_inset
