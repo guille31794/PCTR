@@ -12,6 +12,6 @@ public class numPerfectos implements Callable
 {
     public static void main(String[] args) 
     {
-        int ini = int(args[0]), fin = new Integer(args[1]).toUnsignedLong();
+        int ini = Integer.parseInt(args[0]), fin = Integer.parseInt(args[1]);
     }
 }
