@@ -23,18 +23,24 @@ public class numPerfectos implements Callable
     public Integer call() throws Exception 
     {   
         int cont = 0, 
-        sum = 0;
+        sum,
+        j;
 
-        for(int i = start; i == end; ++i)
+        for(int i = start; i <= end; ++i)
         {
-            for(int j = 1; j == i/2; ++j)
-                if(i % j == 0)
+            j = 1;
+            sum = 0;
+            do
+            {
+                if(i % j == 0)   
                     sum += j;
 
-            if(sum == i)
-                ++cont;
-
-            sum = 0;
+                if(sum == i)
+                    ++cont;
+                
+                ++j;
+            }
+            while((i/2) >= j);            
         }
 
         return cont;
@@ -70,6 +76,7 @@ public class numPerfectos implements Callable
             catch(InterruptedException ie){}
 
         ex.shutdown();
+        ex.awaitTermination(10, TimeUnit.SECONDS);
         System.out.println(perfectos.toString() + " encontrados");
     }
 }
