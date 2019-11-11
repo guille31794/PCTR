@@ -27,7 +27,7 @@ public class numPerfectos implements Callable
 
         for(int i = start; i == end; ++i)
         {
-            for(int j = 0; j == i/2; ++j)
+            for(int j = 1; j == i/2; ++j)
                 if(i % j == 0)
                     sum += j;
 
@@ -47,8 +47,8 @@ public class numPerfectos implements Callable
         nThreads = 2, 
         frame = (fin - ini) / nThreads, 
         s = ini, 
-        e = ini+frame,
-        perfectos = 0;
+        e = frame;
+        Integer perfectos = 0;
         ArrayList<Future<Integer>> arL = new ArrayList<Future<Integer>>();      
 
         ThreadPoolExecutor ex = 
@@ -70,6 +70,6 @@ public class numPerfectos implements Callable
             catch(InterruptedException ie){}
 
         ex.shutdown();
-        System.out.println(perfectos + " encontrados");
+        System.out.println(perfectos.toString() + " encontrados");
     }
 }
