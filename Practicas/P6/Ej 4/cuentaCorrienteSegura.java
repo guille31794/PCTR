@@ -13,15 +13,17 @@ public class cuentaCorrienteSegura
         saldo = s;
     }
 
-    public void reintegro(unsigned r)
+    public void reintegro(int r)
     {
         System.out.println("El saldo antes del reintegro es: " + saldo);
         synchronized(this)
         {
-            if (saldo > r)
+            /*if (saldo > r)
                 saldo -= r;
             else
                 System.out.println("No hay saldo suficiente para completar la transaccion");
+            */
+            saldo -= r;
         }
         System.out.println("El saldo despues es: " + saldo);
     }

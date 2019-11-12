@@ -14,18 +14,20 @@ interface sacar
 
 interface meter
 {
-    public abstract void ingresar(double i);
+    public abstract void ingresar(double in);
 }
 
 public class simulaRedCajeros implements Runnable
 {
     private cuentaCorrienteSegura c;
     private Random r;
+    private int option;
 
-    public simulaRedCajeros(cuentaCorrienteSegura cc)
+    public simulaRedCajeros(cuentaCorrienteSegura cc, int o)
     {
         c = cc;
         r = new Random(System.currentTimeMillis());
+        option = o;
     }
     
     @Override
@@ -34,15 +36,15 @@ public class simulaRedCajeros implements Runnable
         int i = 0;
         do
         {
-            switch(r.nextInt(2))
+            switch(option)//r.nextInt(2))
             {
                 case 0: sacar s =
                 (int r) -> {c.reintegro(r);};
-                s.reintegro(r.nextInt(1000));
+                s.reintegro(1000);//r.nextInt(1000));
                 break;
                 case 1: meter m = 
-                (double i) -> {c.ingreso(i);};
-                m.ingresar(r.nextDouble(1000.0));
+                (double in) -> {c.ingreso(in);};
+                m.ingresar(1000.0);//r.nextDouble()*1000.0);
                 break;
                 default:
                 break;
@@ -53,16 +55,16 @@ public class simulaRedCajeros implements Runnable
         while(i < 10000);
     }
 
-    public static void main(String[] args) 
+    public static void main(String[] args) throws InterruptedException
     {
         cuentaCorrienteSegura c = new cuentaCorrienteSegura(7500.00);
-        int nThreads = 4;
+        int nThreads = 2;
         ThreadPoolExecutor ex =
         (ThreadPoolExecutor)Executors.newFixedThreadPool(nThreads);
 
         for(int i = 0; i < nThreads; ++i)
         {
-            ex.submit(new simulaRedCajeros());
+            ex.submit(new simulaRedCajeros(c,i));
         }
 
         ex.shutdown();

@@ -84,13 +84,14 @@ Guillermo Girón García
 \end_layout
 
 \begin_layout Date
-5 - 11 - 2019
+12 - 11 - 2019
 \end_layout
 
 \begin_layout Standard
-3) En un portatil, equipado con i3 3210m, 8GB de ram, y ejecutando una distribuc
-ión Linux basada en Ubuntu 19.10, con openJDK 13, los resultados obtenidos
- para una matriz de 1000x1000 elementos son:
+4) Las pruebas han sido realizadas en un portatil HP G6, equipado con un
+ intel i3 3210m de dos núcleos físicos y 4 hebras, 8GB de ram ddr3, en distribuc
+ión Linux basada en Ubuntu 19.10, con open JDk 13, y los resultados obtenidos
+ son los siguientes:
 \end_layout
 
 \begin_layout Standard
@@ -114,7 +115,7 @@ Tareas
 \begin_inset Text
 
 \begin_layout Plain Layout
-Tiempo 
+Tiempo
 \end_layout
 
 \end_inset
@@ -143,7 +144,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-10.87
+2,75
 \end_layout
 
 \end_inset
@@ -172,7 +173,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-5.98
+1,41
 \end_layout
 
 \end_inset
@@ -181,7 +182,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-1.81
+1,95
 \end_layout
 
 \end_inset
@@ -201,7 +202,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-4.4
+1,13
 \end_layout
 
 \end_inset
@@ -210,7 +211,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-2.47
+2,43
 \end_layout
 
 \end_inset
@@ -230,7 +231,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-5.3
+1,14
 \end_layout
 
 \end_inset
@@ -239,7 +240,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-2.05
+2,41
 \end_layout
 
 \end_inset
@@ -259,7 +260,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-5.4
+1,05
 \end_layout
 
 \end_inset
@@ -268,7 +269,7 @@ SpeedUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-2.01
+2,61
 \end_layout
 
 \end_inset

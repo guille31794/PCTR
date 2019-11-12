@@ -65,7 +65,7 @@ public class resImagenPar implements Runnable
             for (int j = 0; j != dim; ++j)
                 imagen[i][j] = r.nextInt(255);
         
-        int nThreads = 2, s = 0, frame = dim/nThreads, e = frame;
+        int nThreads = 16, s = 0, frame = dim/nThreads, e = frame;
         ThreadPoolExecutor ex = 
         (ThreadPoolExecutor)Executors.newFixedThreadPool(nThreads);
         long endt, init = System.currentTimeMillis();
