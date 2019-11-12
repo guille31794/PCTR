@@ -44,7 +44,7 @@ public static void main (String[] args) throws Exception
     ThreadPoolExecutor tpe = (ThreadPoolExecutor)Executors.newCachedThreadPool();
     ServerSocket chuff = new ServerSocket (puerto, 3000);
     double iniTime = System.currentTimeMillis();
-    while (i < 500)
+    while (i < 100)
     {
         System.out.println("Esperando solicitud de conexion...");
         Socket cable = chuff.accept();

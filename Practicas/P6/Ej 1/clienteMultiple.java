@@ -38,8 +38,8 @@ public class clienteMultiple implements Runnable
     public static void main (String[] args)
     {
         int i = 0;
-        ThreadPoolExecutor tpe = (ThreadPoolExecutor)Executors.newCachedThreadPool();
-        while (i < 500)
+        ThreadPoolExecutor tpe = (ThreadPoolExecutor)Executors.newFixedThreadPool(2);
+        while (i < 100)
         {
             tpe.submit(new clienteMultiple());
             try

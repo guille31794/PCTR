@@ -39,7 +39,7 @@ public class ServidorHilosinPool implements Runnable
 
 public static void main (String[] args) throws Exception
 {
-    int i = 0, max = 500;
+    int i = 0, max = 100;
     int puerto = 2001;
     ServerSocket chuff = new ServerSocket (puerto, 3000);
     Thread t[] = new Thread[max];
