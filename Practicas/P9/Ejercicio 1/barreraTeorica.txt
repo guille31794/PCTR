@@ -1,0 +1,29 @@
+
+Triatlon:
+    var:
+    Integer participantes[100] = 0
+    barrier posta[3]
+
+    procedure Nadar(integer p):
+        participantes[p] += random()
+        posta[1].await()
+    
+    procedure Correr(integer p):
+        participantes[p] += random()
+        posta[2].await()
+
+    procedure Bicicleta(integer p):
+        participantes[p] += random()
+        posta[3].await()
+
+    begin:
+        for all p in participantes:
+            Nadar(p)
+            Correr(p)
+            Bicicleta(p)
+
+        [tiempo, p] = min(participantes)
+
+        Write("El participante" p "ha llegado primero, en" tiempo 
+        "segundos")
+
