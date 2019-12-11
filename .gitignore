@@ -14,7 +14,6 @@ package-list
 *.tif
 *.jpg
 *.tiff
-*.png
 *.aux
 *.fdb_latexmk
 *.log
