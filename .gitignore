@@ -15,3 +15,8 @@ package-list
 *.jpg
 *.tiff
 *.png
+*.aux
+*.fdb_latexmk
+*.log
+*.fls
+*.synctex.gz
