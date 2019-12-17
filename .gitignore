@@ -14,11 +14,8 @@ package-list
 *.tif
 *.jpg
 *.tiff
-<<<<<<< HEAD
 *.aux
 *.fdb_latexmk
 *.log
 *.fls
 *.synctex.gz
-=======
->>>>>>> c1143f755b1ca187e1073899b59d0a44c0a77690
