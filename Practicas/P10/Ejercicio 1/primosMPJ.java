@@ -4,7 +4,14 @@
 * paso de mensajes
 */
 
+import mpi.*;
+
 public class primosMPJ 
 {
-    
+    public static void main(String[] args) 
+    {
+        MPI.Init();
+
+        MPI.Finalize();
+    }
 }
