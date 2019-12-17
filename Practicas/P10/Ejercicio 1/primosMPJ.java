@@ -12,6 +12,8 @@ public class primosMPJ
     {
         MPI.Init();
 
+        
+
         MPI.Finalize();
     }
 }
