@@ -10,7 +10,7 @@ public class desCesar
 
     for(int i = 0; i < s.length(); ++i)
     {
-      str_ += (char)(s.charAt(i) - (n % 27));
+      str_ += (char)(s.charAt(i) - (n % 26));
     }
   }
 
@@ -18,7 +18,10 @@ public class desCesar
 
   public static void main(String[] args)
   {
-    desCesar C = new desCesar(Integer.parseInt(args[0]), args[1]);
-    System.out.println("La cadena descifrada es: " + C.getDesCesar());
+    for(int i = 1; i < 26; ++i)
+    {
+      desCesar C = new desCesar(i, args[0]);
+      System.out.println("La cadena descifrada es: " + C.getDesCesar());
+    }
   }
 }

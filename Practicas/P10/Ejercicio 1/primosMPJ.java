@@ -12,7 +12,13 @@ public class primosMPJ
     {
         MPI.Init();
 
-        
+        int rank = MPI.COMM_WORLD.Rank(),
+        size = MPI.COMM_WORLD.Size(),
+        tag = 100,
+        emsisor = 0,    
+        unitsize = ;        
+
+
 
         MPI.Finalize();
     }
