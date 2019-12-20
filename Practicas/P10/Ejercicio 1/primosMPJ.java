@@ -24,39 +24,36 @@ public class primosMPJ
 
     public static void main(String[] args) throws MPIException
     {
-        // Inicialización y parametros necesarios
+        // Inicialización y parametros necesarios 
         MPI.Init(args);
 
         int rank = MPI.COMM_WORLD.Rank(),
-        size = MPI.COMM_WORLD.Size(),
         tag = 100,
-        // Se puede eliminar
-        emisor = 0,
         // División inicial de las tareas
         np = Integer.parseInt(args[0]),
         frame = (int)Math.pow(10.0, 8.0) / np,
-        primos[] = new int[np];        
+        primos[] = new int[np],
+        start = rank*frame+1;
 
-        long t,tIni = System.currentTimeMillis();
-        // Un único proceso para controlarlos a todos
-        if(rank == emisor)
+        if(rank == 0)
         {
-            int start[] = new int[1],
-            nPrimos = 0;
-            start[0] = 2;
-            
+            long t,
+            tIni = System.currentTimeMillis();
+        }
 
-            for(int i = 1; i != np+1; ++i)
-            {
-                MPI.COMM_WORLD.Ssend(start, 0, 1, MPI.INT, i, tag);
-                start[0] += frame + 1;
-            }
+        for(int i = start; i < start+frame; ++i)
+            if(esPrimo(i))
+                ++primos[rank];
 
-            for(int i = 1; i != np + 1; ++i)
-            {
-                MPI.COMM_WORLD.Recv(primos, i-1, 1, MPI.INT, i, tag);
-                nPrimos += primos[i-1];
-            }
+        // Un único proceso para controlarlos a todos
+        if(rank == 0)
+        {
+            for(int i = 1; i != np; ++i)
+                MPI.COMM_WORLD.Recv(primos, i, 1, MPI.INT, i, tag);
+
+            int nPrimos = 0;
+            for(int i = 0; i < np; ++i)
+                nPrimos += primos[i];
 
             t = System.currentTimeMillis() - tIni;
             System.out.println(nPrimos + "primos encontrados en " + 
@@ -64,22 +61,7 @@ public class primosMPJ
         }
         // Procesos slaves
         else
-        {
-            int ini[] = new int[1],
-            limit;
-
-            MPI.COMM_WORLD.Recv(ini, 0, 1, MPI.INT, emisor, tag);
-
-            limit = ini[0] + frame;
-
-            for(int i = ini[0]; i != limit; ++i)
-            {
-                if(esPrimo(i))
-                    ++primos[0];
-            }
-
-            MPI.COMM_WORLD.Send(primos, 0, 1, MPI.INT, emisor, tag);
-        }
+            MPI.COMM_WORLD.Send(primos, rank, 1, MPI.INT, 0, tag);
 
         MPI.Finalize();
     }
