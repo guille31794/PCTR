@@ -30,16 +30,18 @@ public class primosMPJ
         int rank = MPI.COMM_WORLD.Rank(),
         tag = 100,
         // División inicial de las tareas
-        np = Integer.parseInt(args[0]),
+        // El primer argumento a tomar lo utiliza
+        // MPI.Init, el segundo es nuestro parametro
+        np = Integer.parseInt(args[1]),
         frame = (int)Math.pow(10.0, 8.0) / np,
         primos[] = new int[np],
         start = rank*frame+1;
 
-        if(rank == 0)
-        {
-            long t,
-            tIni = System.currentTimeMillis();
-        }
+        for(int i = 0; i < np; ++i)
+            primos[i] = 0;
+
+        long t,
+        tIni = System.currentTimeMillis();
 
         for(int i = start; i < start+frame; ++i)
             if(esPrimo(i))
@@ -56,7 +58,7 @@ public class primosMPJ
                 nPrimos += primos[i];
 
             t = System.currentTimeMillis() - tIni;
-            System.out.println(nPrimos + "primos encontrados en " + 
+            System.out.println(nPrimos + " primos encontrados en " + 
             t/1000 + "s.");
         }
         // Procesos slaves
