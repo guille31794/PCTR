@@ -2,6 +2,7 @@
 #include <thread>
 #include <mutex>
 #include <condition_variable>
+#include <atomic>
 
 using namespace std;
 
@@ -26,8 +27,8 @@ void Semaphore::waitS()
     std::unique_lock<std::mutex> L(m);
     if(!S)
     {
-        cv.wait(L);
         ++waiting;
+        cv.wait(L);
     }
     else
         --S;
@@ -39,17 +40,16 @@ void Semaphore::signalS()
     std::unique_lock<std::mutex> L(m);
     if(waiting)
     {
-        cv.notify_one();
         --waiting;
+        cv.notify_one();
     }
     else
         ++S;
-
     L.unlock();
 }
 
 int n{0};
-Semaphore::Semaphore s{1};
+Semaphore s{1};
 
 void incr()
 {
@@ -60,8 +60,8 @@ void incr()
 
 int main(int argc, char const *argv[])
 {
-    unsigned inc{20000};
-    Thread t1{[inc]()
+    unsigned inc{30000};
+    thread t1{[inc]()
     {
         for(unsigned i = 0; i < (inc/2); ++i)
             incr();
@@ -70,8 +70,14 @@ int main(int argc, char const *argv[])
     {
         for(unsigned i = 0; i < (inc/2); ++i)
             incr();
+    }},
+    t3{[inc]()
+    {
+        for(unsigned i = 0; i < (inc/2); ++i)
+            incr();
     }};
 
+    t3.join();
     t2.join();
     t1.join();
 
