@@ -8,7 +8,7 @@ public class Monastery
   {
     private int id;
     public Monk(int id){this.id = id;}
-    public Eat()
+    public void Eat()
     {
 
     }
@@ -16,7 +16,7 @@ public class Monastery
 
   class Chef
   {
-    public Cook()
+    public void Cook()
     {
       
     }
